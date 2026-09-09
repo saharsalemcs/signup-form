@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf9f6;
+  --foreground: #1e1b18;
+
+  --surface: #ffffff;
+  --muted: #f1efea;
+  --muted-foreground: #6b655d;
+  --border: #e2dfd8;
+
+  --accent: #2f5d50;
+  --accent-hover: #24483e;
+  --accent-foreground: #ffffff;
+
+  --danger: #b3261e;
+  --danger-bg: #fbecea;
+  --success: #2f6b4f;
+  --success-bg: #eaf3ee;
+
+  --radius: 0.5rem;
+  --ring: #2f5d50;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #14120f;
+    --foreground: #f2efe9;
+
+    --surface: #1b1815;
+    --muted: #221f1b;
+    --muted-foreground: #a39c90;
+    --border: #322e28;
+
+    --accent: #4f8a76;
+    --accent-hover: #61a189;
+    --accent-foreground: #0e1310;
+
+    --danger: #e2564c;
+    --danger-bg: #2a1613;
+    --success: #4f8a76;
+    --success-bg: #16211c;
+
+    --ring: #4f8a76;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+
+  --radius-default: var(--radius);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
