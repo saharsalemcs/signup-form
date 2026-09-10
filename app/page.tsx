@@ -18,7 +18,7 @@ export default function SignUpPage() {
           </p>
         </div>
 
-        <SignUpForm onSubmit={handleSubmit} />
+        <SignUpForm />
       </div>
     </main>
   );

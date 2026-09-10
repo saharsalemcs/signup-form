@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "./Input";
 import { signUpFields } from "./signUpFields";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,11 +10,7 @@ import {
 } from "@/lib/validations/sign-up-schema";
 import FormError from "./FormError";
 
-interface SignUpFormProps {
-  onSubmit?: (values: SignUpFormValues) => Promise<void> | void;
-}
-
-export default function SignUpForm({ onSubmit }: SignUpFormProps) {
+export default function SignUpForm() {
   const {
     register,
     handleSubmit,
@@ -32,19 +28,16 @@ export default function SignUpForm({ onSubmit }: SignUpFormProps) {
     },
   });
 
-  const submitHandler = async (values: SignUpFormValues) => {
-    console.log("Form Submitted Successfully:", values);
-
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    alert("Your account has been created");
+  const onsubmit: SubmitHandler<SignUpFormValues> = (data) => {
+    console.log(data);
+    alert("Your account created successfully");
     reset();
   };
 
   return (
     <form
       className="flex w-full max-w-md flex-col gap-5"
-      onSubmit={handleSubmit(submitHandler)}
+      onSubmit={handleSubmit(onsubmit)}
     >
       {signUpFields.map((field) => (
         <Input
