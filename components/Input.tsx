@@ -32,7 +32,7 @@ export default function Input({
         {label}
       </label>
 
-      <div>
+      <div className="relative">
         <input
           id={inputId}
           ref={ref}
